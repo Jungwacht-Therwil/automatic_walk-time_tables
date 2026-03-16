@@ -1,6 +1,6 @@
 {
   "name": "automatic-walk-time-tables",
-  "version": "6.2.2",
+  "version": "6.2.3",
   "scripts": {
     "ng": "ng",
     "start": "tsc set-env.ts && BACKEND_DOMAIN=http://localhost:5000 node set-env.js && angular-build-info && ng serve",
@@ -51,6 +51,6 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "ts-node": "~10.9.2",
-    "typescript": "~5.5.4"
+    "typescript": "^5.5.4"
   }
 }
