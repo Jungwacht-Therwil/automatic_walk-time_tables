@@ -28,7 +28,7 @@ class FlurnamenIndex:
 
         with fiona.open(self.shp_file) as src:
             for obj in src:
-                (x, y, h) = obj["geometry"]["coordinates"]
+                x, y, h = obj["geometry"]["coordinates"]
                 swiss_name = SwissName(
                     name=obj["properties"]["NAME"],
                     object_type=obj["properties"]["OBJEKTART"],
