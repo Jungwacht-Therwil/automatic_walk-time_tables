@@ -4,9 +4,10 @@ import {MapAnimatorService} from "../../services/map-animator.service";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-export-settings',
-  templateUrl: './export-settings.component.html',
-  styleUrls: ['./export-settings.component.scss']
+    selector: 'app-export-settings',
+    templateUrl: './export-settings.component.html',
+    styleUrls: ['./export-settings.component.scss'],
+    standalone: false
 })
 export class ExportSettingsComponent {
 

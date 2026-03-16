@@ -1,9 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-upload-area',
-  templateUrl: './upload-area.component.html',
-  styleUrls: ['./upload-area.component.scss']
+    selector: 'app-upload-area',
+    templateUrl: './upload-area.component.html',
+    styleUrls: ['./upload-area.component.scss'],
+    standalone: false
 })
 export class UploadAreaComponent implements OnInit {
 

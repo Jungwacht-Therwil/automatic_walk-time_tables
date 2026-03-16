@@ -6,9 +6,10 @@ import {combineLatest} from "rxjs";
 import {take} from "rxjs/operators";
 
 @Component({
-  selector: 'app-elevation-profile',
-  templateUrl: './elevation-profile.component.html',
-  styleUrls: ['./elevation-profile.component.scss']
+    selector: 'app-elevation-profile',
+    templateUrl: './elevation-profile.component.html',
+    styleUrls: ['./elevation-profile.component.scss'],
+    standalone: false
 })
 export class ElevationProfileComponent {
 

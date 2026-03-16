@@ -6,9 +6,10 @@ import { Clipboard } from '@angular/cdk/clipboard';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-download-data',
-  templateUrl: './download-data.component.html',
-  styleUrls: ['./download-data.component.scss']
+    selector: 'app-download-data',
+    templateUrl: './download-data.component.html',
+    styleUrls: ['./download-data.component.scss'],
+    standalone: false
 })
 export class DownloadDataComponent implements OnInit {
 

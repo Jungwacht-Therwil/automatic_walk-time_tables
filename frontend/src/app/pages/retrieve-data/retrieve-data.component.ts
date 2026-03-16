@@ -8,7 +8,8 @@ import {Router} from "@angular/router";
 @Component({
     selector: 'app-retrieve-data',
     templateUrl: './retrieve-data.component.html',
-    styleUrls: ['/retrieve-data.component.scss']
+    styleUrls: ['/retrieve-data.component.scss'],
+    standalone: false
 })
 export class RetrieveDataComponent implements OnInit {
     static baseURL = environment.API_URL;
