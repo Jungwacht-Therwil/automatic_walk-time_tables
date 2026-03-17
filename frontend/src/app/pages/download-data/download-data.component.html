@@ -4,9 +4,11 @@
   <p>Daten werden heruntergeladen.</p>
 
   <p class="old_state"><b>Export Log:</b></p>
-  <p *ngFor="let old_state of statusManager.history" class="old_state">
-    &nbsp;- <b>{{old_state?.last_change}}:</b> {{old_state?.message}}
-  </p>
+  @for (old_state of statusManager.history; track old_state) {
+    <p class="old_state">
+      &nbsp;- <b>{{old_state?.last_change}}:</b> {{old_state?.message}}
+    </p>
+  }
   <p class="old_state" [ngClass]="{'error_message': statusManager.status == 'Fehler'}">
     &nbsp;- <b>{{statusManager.last_change}}:</b> {{statusManager.status_message}} <i> ({{statusManager.status}})</i>
   </p>
@@ -14,7 +16,7 @@
   <p><br></p>
 
   <p>Falls das Herunterladen nicht automatisch startet, klicke auf den folgenden Button. Deine Daten sind
-    bis {{available_until}} verfügbar.</p>
+  bis {{available_until}} verfügbar.</p>
 
   <a mat-stroked-button href="{{download_link}}"> Daten herunterladen</a>
 

@@ -1,5 +1,7 @@
 <a class="export-overview" class="dload" target="_blank">
   <div class="{{docTypeClass}}"></div>
   <h3>{{name}}</h3>
-  <p *ngIf="changeDate">Änderungsdatum: {{numberToDateString(changeDate)}}</p>
+  @if (changeDate) {
+    <p>Änderungsdatum: {{numberToDateString(changeDate)}}</p>
+  }
 </a>
