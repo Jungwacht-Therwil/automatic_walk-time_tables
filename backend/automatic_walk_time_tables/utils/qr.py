@@ -14,6 +14,7 @@ def build_qr_code_image_string(uuid, raw: bool = False):
         r = requests.post(
             "https://backend.qr.cevi.tools/png",
             json={"text": final_url},
+            timeout=(3.05, 10),
         )
     except requests.exceptions.RequestException:
         logging.exception(
@@ -21,24 +22,20 @@ def build_qr_code_image_string(uuid, raw: bool = False):
             uuid,
             "https://backend.qr.cevi.tools/png",
         )
-        return ""
+        return b"" if raw else ""
     except IncompleteRead:
         logging.exception(
             "IncompleteRead while requesting QR backend for UUID=%s", uuid
         )
-        return ""
+        return b"" if raw else ""
 
     def _is_image(content: bytes, content_type: str | None) -> bool:
         if not content:
             return False
         if content_type and content_type.startswith("image/"):
             return True
-        # Check common magic bytes for PNG, JPEG, GIF
+        # Check magic bytes for PNG
         if content.startswith(b"\x89PNG\r\n\x1a\n"):
-            return True
-        if content.startswith(b"\xff\xd8\xff"):
-            return True
-        if content[:6] in (b"GIF87a", b"GIF89a"):
             return True
         return False
 
@@ -54,7 +51,7 @@ def build_qr_code_image_string(uuid, raw: bool = False):
                 content_type,
                 len(qr_code_bytes) if qr_code_bytes is not None else 0,
             )
-            return ""
+            return b"" if raw else ""
 
         if raw:
             # if raw, only return the qr code image bytes
@@ -72,4 +69,4 @@ def build_qr_code_image_string(uuid, raw: bool = False):
 
     else:
         logging.debug("QR backend returned status %s for UUID=%s", r.status_code, uuid)
-        return ""  # no QR code
+        return b"" if raw else ""  # no QR code
