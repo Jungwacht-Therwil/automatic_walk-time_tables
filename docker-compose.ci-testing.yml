@@ -87,10 +87,10 @@ services:
       driver: none
 
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80"]
-      interval: 2s
-      timeout: 1s
-      retries: 60
+      test: "wget --no-verbose --tries=1 --spider http://127.0.0.1 || exit 1"
+      interval: 5s
+      timeout: 5s
+      retries: 180
 
   awt-valhalla:
     build:
