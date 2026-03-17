@@ -335,23 +335,35 @@ class MapCreator:
             point_layers.append(point_layer)
 
         qr_code_string = build_qr_code_image_string(self.uuid)
+        if not qr_code_string:
+            # try 3 times more
+            for _ in range(3):
+                time.sleep(0.5)
+                qr_code_string = build_qr_code_image_string(self.uuid)
+                if qr_code_string:
+                    break
+
+        attributes = {
+            "scale": "Massstab: 1:" + f"{map_scaling:,}".replace(",", "'"),
+            "map": {
+                "center": center,
+                "scale": map_scaling,
+                "dpi": 250,
+                "pdfA": True,
+                "projection": "EPSG:2056",
+                "rotation": 0,
+                "layers": point_layers + ([path_layer] + map_layers),
+            },
+        }
+
+        # Only include qr_code when we actually received a valid QR image
+        if qr_code_string:
+            attributes["qr_code"] = qr_code_string
 
         query_json = {
             "layout": "A4 landscape",
             "outputFormat": "pdf",
-            "attributes": {
-                "scale": "Massstab: 1:" + f"{map_scaling:,}".replace(",", "'"),
-                "qr_code": qr_code_string,
-                "map": {
-                    "center": center,
-                    "scale": map_scaling,
-                    "dpi": 250,
-                    "pdfA": True,
-                    "projection": "EPSG:2056",
-                    "rotation": 0,
-                    "layers": point_layers + ([path_layer] + map_layers),
-                },
-            },
+            "attributes": attributes,
         }
 
         return query_json
