@@ -16,10 +16,16 @@ def build_qr_code_image_string(uuid, raw: bool = False):
             json={"text": final_url},
         )
     except requests.exceptions.RequestException:
-        logging.exception("Failed to request QR backend for UUID=%s URL=%s", uuid, "https://backend.qr.cevi.tools/png")
+        logging.exception(
+            "Failed to request QR backend for UUID=%s URL=%s",
+            uuid,
+            "https://backend.qr.cevi.tools/png",
+        )
         return ""
     except IncompleteRead:
-        logging.exception("IncompleteRead while requesting QR backend for UUID=%s", uuid)
+        logging.exception(
+            "IncompleteRead while requesting QR backend for UUID=%s", uuid
+        )
         return ""
 
     def _is_image(content: bytes, content_type: str | None) -> bool:
