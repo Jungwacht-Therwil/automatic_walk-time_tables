@@ -3,12 +3,13 @@ import {MapAnimatorService} from "../../services/map-animator.service";
 import {MapService} from "../../services/map.service";
 
 @Component({
-  selector: 'app-map-background',
-  templateUrl: './map-background.component.html',
-  styleUrls: ['./map-background.component.scss'],
-  providers: [
-    {provide: Window, useValue: window}
-  ]
+    selector: 'app-map-background',
+    templateUrl: './map-background.component.html',
+    styleUrls: ['./map-background.component.scss'],
+    providers: [
+        { provide: Window, useValue: window }
+    ],
+    standalone: false
 })
 export class MapBackgroundComponent implements OnInit, AfterViewInit {
 

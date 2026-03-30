@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, provideZoneChangeDetection} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -67,7 +67,9 @@ import { RetrieveDataComponent } from './pages/retrieve-data/retrieve-data.compo
     MatProgressSpinnerModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    provideZoneChangeDetection(),
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

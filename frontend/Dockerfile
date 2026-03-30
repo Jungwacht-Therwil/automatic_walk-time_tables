@@ -1,7 +1,7 @@
 
 # Stage 1: Compile and Build angular codebase
 # Use official node image as the base image
-FROM node:20.13.1-alpine3.20 AS build
+FROM node:20.20.1-alpine3.23 AS build
 
 # Set the working directory
 WORKDIR /app
@@ -35,7 +35,7 @@ FROM nginx:1.23.3-alpine
 COPY ./frontend/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy the build output txo replace the default nginx contents.
-COPY --from=build /app/dist/automatic-walk-time-tables /usr/share/nginx/html
+COPY --from=build /app/dist/automatic-walk-time-tables/browser /usr/share/nginx/html/
 
 # Expose port 80
 EXPOSE 80

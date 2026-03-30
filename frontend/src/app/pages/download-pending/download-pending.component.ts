@@ -5,9 +5,10 @@ import {StatusManagerService} from 'src/app/services/status-manager.service';
 import {MapAnimatorService} from "../../services/map-animator.service";
 
 @Component({
-  selector: 'app-download-pending',
-  templateUrl: './download-pending.component.html',
-  styleUrls: ['./download-pending.component.scss']
+    selector: 'app-download-pending',
+    templateUrl: './download-pending.component.html',
+    styleUrls: ['./download-pending.component.scss'],
+    standalone: false
 })
 export class DownloadPendingComponent implements OnInit {
 

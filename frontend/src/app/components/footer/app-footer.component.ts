@@ -3,9 +3,10 @@ import buildInfo from '../../../build';
 import {environment} from "../../../environments/environment";
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './app-footer.component.html',
-  styleUrls: ['./app-footer.component.scss']
+    selector: 'app-footer',
+    templateUrl: './app-footer.component.html',
+    styleUrls: ['./app-footer.component.scss'],
+    standalone: false
 })
 export class AppFooterComponent implements OnInit {
 
